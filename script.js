@@ -1,5 +1,13 @@
 const divGrid = document.querySelector("#div-grid");
 
+
+const gridItems = document.querySelectorAll(".grid-cell");
+gridItems.forEach(function(item) {
+    item.addEventListener("mouseover", drawTrail);
+});
+
+
+// Draws the grid when the page loads
 function drawGrid() {
     let row = 1;
     let column = 1;
@@ -31,6 +39,9 @@ function drawGrid() {
 }
 
 
+function drawTrail() {
+    this.classList.toggle("drawn");
+}
 
 
 window.onload = drawGrid; // Allows function drawGrid to be

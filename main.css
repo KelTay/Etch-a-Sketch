@@ -10,5 +10,9 @@ h1 {
 }
 
 .grid-cell {
-    background-color: blue;
+    background-color: darkseagreen;
+}
+
+.drawn {
+    background-color: black;
 }
