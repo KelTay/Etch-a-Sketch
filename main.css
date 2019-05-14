@@ -1,0 +1,9 @@
+h1 {
+    text-align: center;
+}
+
+#div-grid {
+    display: grid;
+    grid-template-rows: repeat(16 1fr);
+    grid-template-columns: repeat(16 1fr);
+}
