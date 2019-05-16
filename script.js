@@ -7,14 +7,15 @@ const buttonRandomColors = document.querySelector("#button-random-colors");
 buttonRandomColors.addEventListener("click", randomColors);
 
 let size = 16; // Number of squares for one side of the grid square.
-const GRID_SIZE = 528; // Total size of the grid div in pixels.
+const GRID_SIZE = 495; // Total size of the grid div in pixels.
+const TOTAL_GAPS = 15; // Total size of the gaps between items in pixels.
 
-
-// Draw the grid, add event listeners when the page loads
+// Draw the grid
 function drawGrid() {
+
     let row = 1;
     let column = 1;
-    
+        
     for (let i = 1; i <= (size * size); ++i) {
 
         let divItem = document.createElement("div");
@@ -24,11 +25,13 @@ function drawGrid() {
         // If size is 16, use the CSS styles for the size.
         // Otherwise, calculate the appropriate item size.
         if (size !== 16) {
-            let newItemSize = Math.floor(GRID_SIZE / size);
+
+            let newItemSize = GRID_SIZE - TOTAL_GAPS / size;
             divItem.style.width = newItemSize + "px";
             divItem.style.height = newItemSize + "px";
         }
 
+        // Make sure item is not at the end of the column.
         if (i % size !== 0) {
 
             divItem.style.gridColumnStart = column;
@@ -40,8 +43,14 @@ function drawGrid() {
 
         } else {
 
-            ++row; // need to assign gridRowStart etc.
+            divItem.style.gridColumnStart = column;
+            divItem.style.gridColumnEnd = column + 1;
+            divItem.style.gridRowStart = row;
+            divItem.style.gridRowEnd = row + 1;
+
+            ++row;
             column = 1;
+
         }
 
         divGrid.appendChild(divItem);
@@ -68,7 +77,7 @@ function reset() {
         return;
     }
 
-    size = newSize;
+    size = parseInt(newSize);
     
     // Remove all the old items from the grid
     while(divGrid.firstChild) {

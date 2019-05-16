@@ -20,15 +20,18 @@ button {
     grid-template-rows: repeat(16, 1fr);
     grid-template-columns: repeat(16, 1fr);
     grid-gap: 1px;
-    max-width: 528px;
-    max-height: 528px;
+    min-width: 495px;
+    min-height: 495px;
+    max-width: 495px;
+    max-height: 495px;
+    overflow: hidden;
     margin: auto;
 }
 
 .grid-cell {
     background-color: darkseagreen;
-    width: 33px;
-    height: 33px;
+    width: 30px;
+    height: 30px;
 }
 
 /*This class is added to each grid item when hovered over */
