@@ -4,12 +4,13 @@ const buttonReset = document.querySelector("#button-reset");
 buttonReset.addEventListener("click", reset);
 
 const buttonRandomColors = document.querySelector("#button-random-colors");
-buttonRandomColors.addEventListener("click", randomColors);
+buttonRandomColors.addEventListener("click", toggleRandomColors);
 
 const GRID_SIZE = 495; // Total size of the grid div in pixels.
 const GAP_SIZE = 1; // Size of a gap between items, in pixels.
 let size = 16; // Number of squares for one side of the grid square.
 let totalGaps = (size - 1) * GAP_SIZE; // Total size of the gaps between items in pixels.
+let isRandomColors = false; // True when the random colors button is clicked.
 
 // Draw the grid
 function drawGrid() {
@@ -28,7 +29,7 @@ function drawGrid() {
         if (size !== 16) {
 
             totalGaps = (size - 1) * GAP_SIZE;
-            
+
             let newItemSize = (GRID_SIZE - totalGaps) / size;
             divItem.style.width = newItemSize + "px";
             divItem.style.height = newItemSize + "px";
@@ -60,14 +61,28 @@ function drawGrid() {
     }
 }
 
-// Draw a trail wherever the mouse hovers
+// Draw a trail wherever the mouse hovers.
+// If random colors is selected, draw a trail of random colors 
+// wherever the mouse hovers.
 function drawTrail() {
-    this.classList.add("drawn");
+    if (!isRandomColors) {
+        this.style.backgroundColor = "black";
+    } else {
+        let r = Math.floor(Math.random() * 256);
+        let g = Math.floor(Math.random() * 256);
+        let b = Math.floor(Math.random() * 256);
+        this.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    }
 }
 
 // Prompts the user for a grid size and resets the grid
 function reset() {
     let newSize = prompt("Please enter number of squares per side", "e.g. 64");
+
+    // If user clicks cancel
+    if (newSize === null) {
+        return;
+    }
 
     if (isNaN(newSize)) {
 
@@ -90,8 +105,14 @@ function reset() {
     drawGrid();
 }
 
-// Changes the mouseover color trail to random colors
-function randomColors() {
+function toggleRandomColors() {
+    if (!isRandomColors) {
+        isRandomColors = true;
+        buttonRandomColors.textContent = "Black";
+    } else {
+        isRandomColors = false;
+        buttonRandomColors.textContent = "Random Colours";
+    } 
 }
 
 window.onload = drawGrid; // Allows function drawGrid to be

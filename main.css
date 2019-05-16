@@ -33,8 +33,3 @@ button {
     width: 30px;
     height: 30px;
 }
-
-/*This class is added to each grid item when hovered over */
-.drawn {
-    background-color: black;
-}
