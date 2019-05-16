@@ -24,8 +24,9 @@ function drawGrid() {
         // If size is 16, use the CSS styles for the size.
         // Otherwise, calculate the appropriate item size.
         if (size !== 16) {
-            divItem.style.width = GRID_SIZE / size;
-            divItem.style.height = divItem.style.width;
+            let newItemSize = Math.floor(GRID_SIZE / size);
+            divItem.style.width = newItemSize + "px";
+            divItem.style.height = newItemSize + "px";
         }
 
         if (i % size !== 0) {
@@ -39,7 +40,7 @@ function drawGrid() {
 
         } else {
 
-            ++row;
+            ++row; // need to assign gridRowStart etc.
             column = 1;
         }
 
@@ -62,7 +63,7 @@ function reset() {
         return;
 
     } else if (newSize <= 0) {
-        
+
         alert("Cannot be less than or equal to zero!");
         return;
     }
