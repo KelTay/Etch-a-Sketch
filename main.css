@@ -20,7 +20,8 @@ button {
     grid-template-rows: repeat(16, 1fr);
     grid-template-columns: repeat(16, 1fr);
     grid-gap: 1px;
-    width: 528px;
+    max-width: 528px;
+    max-height: 528px;
     margin: auto;
 }
 
