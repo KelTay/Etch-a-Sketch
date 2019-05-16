@@ -54,7 +54,6 @@ function drawGrid() {
 
             ++row;
             column = 1;
-
         }
 
         divGrid.appendChild(divItem);
