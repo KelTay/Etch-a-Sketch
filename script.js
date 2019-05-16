@@ -6,9 +6,10 @@ buttonReset.addEventListener("click", reset);
 const buttonRandomColors = document.querySelector("#button-random-colors");
 buttonRandomColors.addEventListener("click", randomColors);
 
-let size = 16; // Number of squares for one side of the grid square.
 const GRID_SIZE = 495; // Total size of the grid div in pixels.
-const TOTAL_GAPS = 15; // Total size of the gaps between items in pixels.
+const GAP_SIZE = 1; // Size of a gap between items, in pixels.
+let size = 16; // Number of squares for one side of the grid square.
+let totalGaps = (size - 1) * GAP_SIZE; // Total size of the gaps between items in pixels.
 
 // Draw the grid
 function drawGrid() {
@@ -26,7 +27,9 @@ function drawGrid() {
         // Otherwise, calculate the appropriate item size.
         if (size !== 16) {
 
-            let newItemSize = GRID_SIZE - TOTAL_GAPS / size;
+            totalGaps = (size - 1) * GAP_SIZE;
+            
+            let newItemSize = (GRID_SIZE - totalGaps) / size;
             divItem.style.width = newItemSize + "px";
             divItem.style.height = newItemSize + "px";
         }
