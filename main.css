@@ -1,5 +1,11 @@
 h1 {
     text-align: center;
+    margin-bottom: 0;
+}
+
+#div-buttons {
+    text-align: center;
+    margin-bottom: 5px;
 }
 
 #div-grid {
@@ -17,6 +23,7 @@ h1 {
     height: 33px;
 }
 
+/*This class is added to each grid item when hovered over */
 .drawn {
     background-color: black;
 }
