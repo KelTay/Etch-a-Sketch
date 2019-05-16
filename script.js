@@ -1,23 +1,14 @@
-const divGrid = document.querySelector("#div-grid");
-
-
-const gridItems = document.querySelectorAll(".grid-cell");
-gridItems.forEach(function(item) {
-    item.addEventListener("mouseover", drawTrail);
-});
-
-
-// Draws the grid when the page loads
+// Draw the grid, add event listeners when the page loads
 function drawGrid() {
     let row = 1;
     let column = 1;
+    const divGrid = document.querySelector("#div-grid");
 
     for (let i = 1; i <= (16 * 16); ++i) {
 
         let divItem = document.createElement("div");
         divItem.setAttribute("class", "grid-cell");
-        
-        divItem.textContent = "test" + i;
+        divItem.addEventListener("mouseover", drawTrail);
 
         if (i % 16 !== 0) {
 
@@ -38,11 +29,10 @@ function drawGrid() {
     }
 }
 
-
+// Draw a trail wherever the mouse hovers
 function drawTrail() {
-    this.classList.toggle("drawn");
+    this.classList.add("drawn");
 }
-
 
 window.onload = drawGrid; // Allows function drawGrid to be
                           // called on page load.
